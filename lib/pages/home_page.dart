@@ -24,7 +24,14 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: _appBar(),
       body: _body(),
+    );
+  }
+
+  _appBar() {
+    return AppBar(
+      title: Text('Lottie Example'),
     );
   }
 
@@ -56,15 +63,18 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 ),
                 IconButton(
                   icon: Icon(
-                      _controller.isAnimating ? Icons.stop : Icons.play_arrow),
+                    _controller.isAnimating ? Icons.stop : Icons.play_arrow,
+                  ),
                   onPressed: () {
-                    setState(() {
-                      if (_controller.isAnimating) {
-                        _controller.stop();
-                      } else {
-                        _controller.repeat();
-                      }
-                    });
+                    setState(
+                      () {
+                        if (_controller.isAnimating) {
+                          _controller.stop();
+                        } else {
+                          _controller.repeat();
+                        }
+                      },
+                    );
                   },
                 ),
               ],
